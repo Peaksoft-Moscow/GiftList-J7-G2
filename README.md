@@ -1,1 +1,1 @@
-![gift-list.png](..%2F..%2FDesktop%2Fgift-list.png)
+![gift-list.png](gift-list.png)
