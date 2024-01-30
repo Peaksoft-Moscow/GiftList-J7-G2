@@ -1,1 +1,1 @@
-![GIFT-LIST.png](GIFT-LIST.png)
+![giftlist.png](giftlist.png)
