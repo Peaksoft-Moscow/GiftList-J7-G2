@@ -6,10 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import peaksoft.giftlistj7g2.model.enums.Role;
 import peaksoft.giftlistj7g2.model.enums.ShoesSize;
 import peaksoft.giftlistj7g2.model.enums.Size;
 
 import java.util.List;
+
 @Entity
 @Table(name = "users")
 @Getter
@@ -25,15 +27,19 @@ public class User {
      int age;
      String email;
      int telephone;
-     @Enumerated(EnumType.STRING)
-     Size size;
-     @Enumerated(EnumType.ORDINAL)
-     ShoesSize shoesSize;
+
      @OneToMany
-     Notification notification;
-     Holiday holiday;
+     List<Notification> notification;
+     @ManyToOne(cascade = {
+             CascadeType.DETACH,
+             CascadeType.MERGE,
+             CascadeType.PERSIST,
+             CascadeType.REFRESH})
      Complaint complaint;
      @OneToMany
      List<Gift> gifts;
-
+     @Enumerated(EnumType.STRING)
+     Role role;
+     Size size;
+     ShoesSize shoesSize;
 }

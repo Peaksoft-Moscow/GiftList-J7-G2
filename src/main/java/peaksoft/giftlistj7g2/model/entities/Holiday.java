@@ -8,6 +8,8 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Table(name = "holidays")
 @Getter
@@ -18,7 +20,9 @@ public class Holiday {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    User user;
     String holidayName;
     LocalDate createDate;
+    @OneToMany
+    List<Gift> gift;
+    String image;
 }

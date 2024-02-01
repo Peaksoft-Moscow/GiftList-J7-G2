@@ -6,9 +6,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
-import peaksoft.giftlistj7g2.model.enums.Size;
+import peaksoft.giftlistj7g2.model.enums.Reservation;
 
 import java.time.LocalDate;
+import java.util.List;
+
 @Entity
 @Table(name = "notifications")
 @Getter
@@ -19,9 +21,15 @@ public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @ManyToMany
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH})
     User user;
+    String sender;
+    String recipient;
+    @Enumerated
+    Reservation reservation;
     LocalDate createDate;
-    Gift gift;
-    Size size;
 }

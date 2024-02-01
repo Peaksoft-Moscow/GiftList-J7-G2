@@ -1,27 +1,22 @@
 package peaksoft.giftlistj7g2.model.entities;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
 @Entity
-@Table(name = "complaints")
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Complaint {
+public class SubCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
-    String description;
     @OneToMany
-    List<User> user;
-
+    List<Category> category;
 }
