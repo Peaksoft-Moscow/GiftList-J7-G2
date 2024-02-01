@@ -28,7 +28,7 @@ public class User {
      String email;
      int telephone;
 
-     @OneToMany
+     @OneToMany(cascade = CascadeType.ALL)
      List<Notification> notification;
      @ManyToOne(cascade = {
              CascadeType.DETACH,
@@ -36,10 +36,11 @@ public class User {
              CascadeType.PERSIST,
              CascadeType.REFRESH})
      Complaint complaint;
-     @OneToMany
+     @OneToMany(cascade = CascadeType.ALL)
      List<Gift> gifts;
+     @Enumerated(EnumType.ORDINAL)
+     ShoesSize shoesSize;
      @Enumerated(EnumType.STRING)
      Role role;
      Size size;
-     ShoesSize shoesSize;
 }

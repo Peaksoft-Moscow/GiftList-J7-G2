@@ -21,7 +21,7 @@ public class Complaint {
     Long id;
     String name;
     String description;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     List<User> user;
 
 }

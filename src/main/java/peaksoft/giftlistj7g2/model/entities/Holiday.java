@@ -22,7 +22,7 @@ public class Holiday {
     Long id;
     String holidayName;
     LocalDate createDate;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     List<Gift> gift;
     String image;
 }

@@ -17,6 +17,6 @@ public class SubCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     List<Category> category;
 }
