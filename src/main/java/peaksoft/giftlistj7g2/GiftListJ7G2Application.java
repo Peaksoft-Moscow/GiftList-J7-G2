@@ -13,7 +13,7 @@ public class GiftListJ7G2Application {
 
     public static void main(String[] args) {
         SpringApplication.run(GiftListJ7G2Application.class, args);
-        log.info("Hello from Gadgetarium-J7 application");
+        log.info("Hello from Gift-List-J7 application");
     }
 
     private String greet() {
