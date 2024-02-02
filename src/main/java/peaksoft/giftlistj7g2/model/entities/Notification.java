@@ -21,15 +21,16 @@ public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    String sender;
+    String recipient;
+    LocalDate createDate;
+    @Enumerated
+    Reservation reservation;
     @ManyToOne(cascade = {
             CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH})
+    @JoinColumn(name = "user_id")
     User user;
-    String sender;
-    String recipient;
-    @Enumerated
-    Reservation reservation;
-    LocalDate createDate;
 }

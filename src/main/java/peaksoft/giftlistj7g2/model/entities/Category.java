@@ -4,7 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 @Entity
+@Table(name = "category")
 @Getter
 @Setter
 @ToString
@@ -15,10 +18,6 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
-    @ManyToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH})
-    SubCategory subCategory;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    List<SubCategory> subCategory;
 }

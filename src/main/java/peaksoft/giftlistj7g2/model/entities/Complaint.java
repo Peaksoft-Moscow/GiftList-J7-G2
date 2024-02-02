@@ -21,7 +21,12 @@ public class Complaint {
     Long id;
     String name;
     String description;
-    @OneToMany(cascade = CascadeType.ALL)
-    List<User> user;
+    @ManyToOne(cascade = {
+            CascadeType.REFRESH,
+            CascadeType.MERGE,
+            CascadeType.DETACH,
+            CascadeType.PERSIST})
+    @JoinColumn(name = "user_id")
+    User user;
 
 }

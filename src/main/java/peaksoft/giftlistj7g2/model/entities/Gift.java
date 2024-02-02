@@ -23,21 +23,23 @@ public class Gift {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String giftName;
-    @ManyToOne(cascade = {
-            CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH})
-    Holiday holiday;
     LocalDate createDate;
     String description;
     String image;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     Reservation reservation;
     @ManyToOne(cascade = {
             CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH})
+    @JoinColumn(name = "user_id")
     User user;
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH})
+    @JoinColumn(name = "gift_id")
+    Holiday holiday;
 }
