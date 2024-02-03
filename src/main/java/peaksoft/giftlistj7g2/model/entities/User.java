@@ -2,11 +2,10 @@ package peaksoft.giftlistj7g2.model.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.FieldDefaults;
+import lombok.experimental.FieldDefaults;;
 import peaksoft.giftlistj7g2.model.enums.Role;
 import peaksoft.giftlistj7g2.model.enums.ShoesSize;
 import peaksoft.giftlistj7g2.model.enums.Size;
-
 import java.util.List;
 
 @Entity
@@ -24,6 +23,8 @@ public class User {
     String lastName;
     int age;
     String email;
+    String password;
+    String repeatPassword;
     int telephone;
     @Enumerated(EnumType.STRING)
     ShoesSize shoesSize;
@@ -40,3 +41,5 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     List<Mailing> mailings;
 }
+
+
