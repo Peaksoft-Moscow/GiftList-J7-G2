@@ -6,6 +6,8 @@ import lombok.experimental.FieldDefaults;;
 import peaksoft.giftlistj7g2.model.enums.Role;
 import peaksoft.giftlistj7g2.model.enums.ShoesSize;
 import peaksoft.giftlistj7g2.model.enums.Size;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -24,8 +26,8 @@ public class User {
     int age;
     String email;
     String password;
-    String repeatPassword;
     int telephone;
+    LocalDate createDate;
     @Enumerated(EnumType.STRING)
     ShoesSize shoesSize;
     @Enumerated(EnumType.STRING)
