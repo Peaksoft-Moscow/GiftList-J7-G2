@@ -22,8 +22,9 @@ public class User {
     Long id;
     String name;
     String lastName;
-    int age;
     String email;
+    String password;//
+    int age;
     int telephone;
     @Enumerated(EnumType.STRING)
     ShoesSize shoesSize;
