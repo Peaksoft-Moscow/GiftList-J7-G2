@@ -53,6 +53,7 @@ public class AuthService {
             System.out.println(e.getMessage());
         }
     }
+
     public Map<String, Object> signUpWithGoogle(OAuth2AuthenticationToken token) throws ClassNotFoundException {
         OAuth2AuthenticatedPrincipal principal = token.getPrincipal();
         if (token == null) {
