@@ -1,4 +1,5 @@
 package peaksoft.giftlistj7g2.controller;
+
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,12 +25,8 @@ public class AuthController {
         AuthResponse response = authService.signUp(authRequest);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
-
     @GetMapping("/with-google")
     public Map<String, Object> withGoggle(OAuth2AuthenticationToken token) throws ClassNotFoundException {
-//        OAuth2AuthenticatedPrincipal principal = token.getPrincipal();
-//        authService.signUpWithGoogle(token);
-//        return principal.getAttributes();
         return authService.signUpWithGoogle(token);
     }
 }

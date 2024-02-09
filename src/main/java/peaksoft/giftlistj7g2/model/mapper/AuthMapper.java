@@ -1,8 +1,5 @@
 package peaksoft.giftlistj7g2.model.mapper;
-
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
 import peaksoft.giftlistj7g2.model.dto.AuthRequest;
 import peaksoft.giftlistj7g2.model.dto.AuthResponse;
 import peaksoft.giftlistj7g2.model.entities.User;
@@ -10,7 +7,6 @@ import peaksoft.giftlistj7g2.model.entities.User;
 import java.time.LocalDate;
 
 @Component
-@RequiredArgsConstructor
 public class AuthMapper
 {
     public User mapToEntity(AuthRequest request){
@@ -20,7 +16,6 @@ public class AuthMapper
         user.setPassword(request.getPassword());
         user.setEmail(request.getEmail());
         return user;
-
     }
 
     public AuthResponse mapToResponse(User user){
@@ -30,7 +25,6 @@ public class AuthMapper
         userResponse.setLastName(user.getLastName());
         userResponse.setPassword(user.getPassword());
         userResponse.setEmail(user.getEmail());
-
         return userResponse;
     }
 }
