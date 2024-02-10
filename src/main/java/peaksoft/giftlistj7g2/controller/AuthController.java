@@ -26,7 +26,7 @@ public class AuthController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @PostMapping("/with-google")
+    @GetMapping("/with-google")
     public Map<String, Object> withGoggle(OAuth2AuthenticationToken token) throws ClassNotFoundException {
         return authService.signUpWithGoogle(token);
     }
