@@ -20,7 +20,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("Not found user by this name");
         }
         return (UserDetails) user;
-
-
     }
 }

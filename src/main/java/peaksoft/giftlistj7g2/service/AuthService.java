@@ -2,9 +2,11 @@ package peaksoft.giftlistj7g2.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import peaksoft.giftlistj7g2.model.entities.User;
 import peaksoft.giftlistj7g2.model.enums.Role;
 import peaksoft.giftlistj7g2.model.mapper.AuthMapper;
@@ -19,23 +21,22 @@ import java.util.Map;
 @Service
 @Slf4j
 @RequiredArgsConstructor
+@Validated
 public class AuthService {
     private final AuthMapper authMapper;
     private final AuthRepository authRepository;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     public AuthResponse signUp(AuthRequest authRequest) {
         User user = authMapper.mapToEntity(authRequest);
-        user.setCreateDate(LocalDate.now());
-        user.setRole(Role.USER);
         authRepository.save(user);
         validationRequest(user);
-
         return authMapper.mapToResponse(user);
     }
 
     public void validationRequest(User user) {
         try {
-            if (authRepository.findByEmail(user.getEmail())== null ){
+            if (authRepository.findByEmail(user.getEmail()) == null) {
                 log.error("This email is not empty ");
                 throw new RuntimeException(" A user with this email already exists");
             }
@@ -47,7 +48,6 @@ public class AuthService {
                 log.error("Password must be at least 8 characters");
                 throw new RuntimeException("password must be at least 8 characters");
             }
-
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
@@ -64,7 +64,7 @@ public class AuthService {
         user.setName((String) (map.get("given_name")));
         user.setLastName((String) map.get("family_name"));
         user.setEmail((String) map.get("email"));
-        user.setPassword((String) map.get("given_name"));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         map.get("given_name");
         user.setCreateDate(LocalDate.now());
         user.setRole(Role.USER);
@@ -77,5 +77,4 @@ public class AuthService {
         getValues.put("createDate", LocalDate.now());
         return getValues;
     }
-
 }

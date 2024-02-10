@@ -4,6 +4,9 @@ import org.springframework.stereotype.Component;
 import peaksoft.giftlistj7g2.model.dto.AuthRequest;
 import peaksoft.giftlistj7g2.model.dto.AuthResponse;
 import peaksoft.giftlistj7g2.model.entities.User;
+import peaksoft.giftlistj7g2.model.enums.Role;
+
+import java.time.LocalDate;
 
 @Component
 public class AuthMapper {
@@ -13,6 +16,8 @@ public class AuthMapper {
         user.setLastName(request.getLastName());
         user.setPassword(request.getPassword());
         user.setEmail(request.getEmail());
+        user.setRole(Role.USER);
+        user.setCreateDate(LocalDate.now());
         return user;
     }
 
@@ -21,8 +26,8 @@ public class AuthMapper {
         userResponse.setId(user.getId());
         userResponse.setName(user.getName());
         userResponse.setLastName(user.getLastName());
-        userResponse.setPassword(user.getPassword());
         userResponse.setEmail(user.getEmail());
+        userResponse.setRole(Role.USER);
         return userResponse;
     }
 }
