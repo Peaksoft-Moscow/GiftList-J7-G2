@@ -15,21 +15,21 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class LoginMapper {
     Role[] role;
-    @Autowired
-    public LoginMapper(Role[] role) {
-        this.role = role;
-    }
+//    @Autowired
+//    public LoginMapper(Role[] role) {
+//        this.role = role;
+//    }
 
-    public LoginResponse mapToResponse(String token, User user) {
-        List<String> roles = new ArrayList<>();
-        for (Role role : Role.values()) {
-            roles.add(role.name());
-        }
-        return LoginResponse.builder()
-                .token(token)
-                .roleName(roles)
-                .build();
-    }
+//    public LoginResponse mapToResponse(String token, User user) {
+//        List<String> roles = new ArrayList<>();
+//        for (Role role : Role.values()) {
+//            roles.add(role.name());
+//        }
+//        return LoginResponse.builder()
+//                .token(token)
+//                .roleName(roles)
+//                .build();
+//    }
 
 
 //    public LoginResponse mapToResponse(String token, User user) {

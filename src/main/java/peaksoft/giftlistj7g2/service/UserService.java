@@ -13,13 +13,10 @@ import peaksoft.giftlistj7g2.dto.RegisterRequest;
 import peaksoft.giftlistj7g2.dto.RegisterResponse;
 import peaksoft.giftlistj7g2.model.entities.User;
 import peaksoft.giftlistj7g2.model.enums.Role;
+import peaksoft.giftlistj7g2.repository.UserRepository;
 import peaksoft.giftlistj7g2.security.jwt.JwtUtil;
 import peaksoft.giftlistj7g2.mapper.LoginMapper;
 import peaksoft.giftlistj7g2.mapper.UserMapper;
-import peaksoft.giftlistj7g2.repository.UserRepository;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

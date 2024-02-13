@@ -9,12 +9,7 @@ import peaksoft.giftlistj7g2.model.entities.User;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-
-//    @Query("select user from User user where user.name=:name")
-//    Optional<org.springframework.security.core.userdetails.User> findByUserName(@Param("name") String name);
-
+public interface UserRepository extends JpaRepository<User, Long>{
     @Query("select user from User user where user.email=:email")
     Optional<User> findByEmail(@Param("email") String email);
-
 }

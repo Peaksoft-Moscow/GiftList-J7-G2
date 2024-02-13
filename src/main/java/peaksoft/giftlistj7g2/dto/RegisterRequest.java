@@ -14,6 +14,5 @@ public class RegisterRequest {
     String email;
     int age;
     String password;
-    boolean subscribe;
 }
 
