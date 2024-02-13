@@ -14,10 +14,10 @@ import java.util.List;
 @Component
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class LoginMapper {
-    Role[] roles;
+    Role[] role;
     @Autowired
-    public LoginMapper(Role[] roles) {
-        this.roles = roles;
+    public LoginMapper(Role[] role) {
+        this.role = role;
     }
 
     public LoginResponse mapToResponse(String token, User user) {
@@ -30,5 +30,23 @@ public class LoginMapper {
                 .roleName(roles)
                 .build();
     }
+
+
+//    public LoginResponse mapToResponse(String token, User user) {
+//        List<String> roles = new ArrayList<>();
+//        boolean firstRoleAdded = false;
+//        for (Role role : Role.values()) {
+//            if (!firstRoleAdded) {
+//                roles.add("ADMIN");
+//                firstRoleAdded = true;
+//            } else {
+//                roles.add("USER");
+//            }
+//        }
+//        return LoginResponse.builder()
+//                .token(token)
+//                .roleName(roles)
+//                .build();
+//    }
 }
 
