@@ -13,7 +13,7 @@ import peaksoft.giftlistj7g2.dto.RegisterRequest;
 import peaksoft.giftlistj7g2.dto.RegisterResponse;
 import peaksoft.giftlistj7g2.model.entities.User;
 import peaksoft.giftlistj7g2.model.enums.Role;
-import peaksoft.giftlistj7g2.repository.UserRepository;
+import peaksoft.giftlistj7g2.repository.AuthRepository;
 import peaksoft.giftlistj7g2.security.jwt.JwtUtil;
 import peaksoft.giftlistj7g2.mapper.LoginMapper;
 import peaksoft.giftlistj7g2.mapper.UserMapper;
@@ -22,7 +22,7 @@ import peaksoft.giftlistj7g2.mapper.UserMapper;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserService {
-    final UserRepository repository;
+    final AuthRepository repository;
     final UserMapper userMapper;
     final PasswordEncoder passwordEncoder;
     final JwtUtil jwtUtil;

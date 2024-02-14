@@ -15,14 +15,14 @@ import peaksoft.giftlistj7g2.service.UserService;
 
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/auth")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserController {
+public class AuthController {
     UserService userService;
     LoginMapper loginMapper;
 
     @Autowired
-    public UserController(UserService userService, LoginMapper loginMapper) {
+    public AuthController(UserService userService, LoginMapper loginMapper) {
         this.userService = userService;
         this.loginMapper = loginMapper;
     }
