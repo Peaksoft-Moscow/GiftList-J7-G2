@@ -1,10 +1,10 @@
-package peaksoft.giftlistj7g2.mapper;
+package peaksoft.giftlistj7g2.model.mapper;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import peaksoft.giftlistj7g2.dto.LoginResponse;
+import peaksoft.giftlistj7g2.model.dto.LoginResponse;
 import peaksoft.giftlistj7g2.model.entities.User;
 import peaksoft.giftlistj7g2.model.enums.Role;
 
@@ -32,21 +32,21 @@ public class LoginMapper {
 //    }
 
 
-    public LoginResponse mapToResponse(String token, User user) {
-        List<String> roles = new ArrayList<>();
-        boolean firstRoleAdded = false;
-        for (Role role : Role.values()) {
-            if (!firstRoleAdded) {
-                roles.add("ADMIN");
-                firstRoleAdded = true;
-            } else {
-                roles.add("USER");
-            }
-        }
-        return LoginResponse.builder()
-                .token(token)
-                .roleName(roles)
-                .build();
-    }
+//    public LoginResponse mapToResponse(String token, User user) {
+//        List<String> roles = new ArrayList<>();
+//        boolean firstRoleAdded = false;
+//        for (Role role : Role.values()) {
+//            if (!firstRoleAdded) {
+//                roles.add("ADMIN");
+//                firstRoleAdded = true;
+//            } else {
+//                roles.add("USER");
+//            }
+//        }
+//        return LoginResponse.builder()
+//                .token(token)
+//                .roleName(roles)
+//                .build();
+//    }
 }
 

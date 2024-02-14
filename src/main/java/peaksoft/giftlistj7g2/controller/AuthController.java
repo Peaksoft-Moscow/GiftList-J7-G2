@@ -6,12 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import peaksoft.giftlistj7g2.dto.LoginResponse;
-import peaksoft.giftlistj7g2.dto.RegisterRequest;
-import peaksoft.giftlistj7g2.dto.RegisterResponse;
-import peaksoft.giftlistj7g2.dto.LoginRequest;
-import peaksoft.giftlistj7g2.mapper.LoginMapper;
-import peaksoft.giftlistj7g2.service.UserService;
+import peaksoft.giftlistj7g2.model.dto.LoginResponse;
+import peaksoft.giftlistj7g2.model.dto.RegisterRequest;
+import peaksoft.giftlistj7g2.model.dto.RegisterResponse;
+import peaksoft.giftlistj7g2.model.dto.LoginRequest;
+import peaksoft.giftlistj7g2.model.service.UserService;
 
 
 @RestController

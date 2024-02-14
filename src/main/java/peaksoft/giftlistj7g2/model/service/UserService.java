@@ -1,4 +1,4 @@
-package peaksoft.giftlistj7g2.service;
+package peaksoft.giftlistj7g2.model.service;
 
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -7,16 +7,16 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import peaksoft.giftlistj7g2.dto.LoginRequest;
-import peaksoft.giftlistj7g2.dto.LoginResponse;
-import peaksoft.giftlistj7g2.dto.RegisterRequest;
-import peaksoft.giftlistj7g2.dto.RegisterResponse;
+import peaksoft.giftlistj7g2.model.dto.LoginRequest;
+import peaksoft.giftlistj7g2.model.dto.LoginResponse;
+import peaksoft.giftlistj7g2.model.dto.RegisterRequest;
+import peaksoft.giftlistj7g2.model.dto.RegisterResponse;
 import peaksoft.giftlistj7g2.model.entities.User;
 import peaksoft.giftlistj7g2.model.enums.Role;
-import peaksoft.giftlistj7g2.repository.AuthRepository;
+import peaksoft.giftlistj7g2.model.repository.AuthRepository;
 import peaksoft.giftlistj7g2.security.jwt.JwtUtil;
-import peaksoft.giftlistj7g2.mapper.LoginMapper;
-import peaksoft.giftlistj7g2.mapper.UserMapper;
+import peaksoft.giftlistj7g2.model.mapper.LoginMapper;
+import peaksoft.giftlistj7g2.model.mapper.UserMapper;
 
 @Service
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package peaksoft.giftlistj7g2.repository;
+package peaksoft.giftlistj7g2.model.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

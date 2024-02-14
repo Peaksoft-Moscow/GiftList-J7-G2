@@ -1,9 +1,9 @@
-package peaksoft.giftlistj7g2.mapper;
+package peaksoft.giftlistj7g2.model.mapper;
 
 import org.springframework.stereotype.Component;
-import peaksoft.giftlistj7g2.dto.RegisterRequest;
-import peaksoft.giftlistj7g2.dto.RegisterResponse;
-import peaksoft.giftlistj7g2.dto.UserResponse;
+import peaksoft.giftlistj7g2.model.dto.RegisterRequest;
+import peaksoft.giftlistj7g2.model.dto.RegisterResponse;
+import peaksoft.giftlistj7g2.model.dto.UserResponse;
 import peaksoft.giftlistj7g2.model.entities.User;
 
 import java.time.LocalDate;
