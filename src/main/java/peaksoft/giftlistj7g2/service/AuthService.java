@@ -10,7 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import peaksoft.giftlistj7g2.model.entities.User;
 import peaksoft.giftlistj7g2.model.enums.Role;
 import peaksoft.giftlistj7g2.model.mapper.AuthMapper;
-import peaksoft.giftlistj7g2.repository.AuthRepository;
+import peaksoft.giftlistj7g2.repository.UserRepository;
 import peaksoft.giftlistj7g2.model.dto.AuthRequest;
 import peaksoft.giftlistj7g2.model.dto.AuthResponse;
 import java.time.LocalDate;
@@ -23,7 +23,7 @@ import java.util.Map;
 @Validated
 public class AuthService {
     private final AuthMapper authMapper;
-    private final AuthRepository authRepository;
+    private final UserRepository authRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     public AuthResponse signUp(AuthRequest authRequest) {
         User user = authMapper.mapToEntity(authRequest);

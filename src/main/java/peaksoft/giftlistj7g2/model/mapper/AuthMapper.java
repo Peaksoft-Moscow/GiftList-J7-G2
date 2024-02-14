@@ -16,9 +16,10 @@ public class AuthMapper {
         user.setLastName(request.getLastName());
         user.setPassword(request.getPassword());
 
-        if (user.getPassword().equals(request.getRepeatPassword())) {
-            user.setPassword(request.getPassword());
+        if (!user.getPassword().equals(request.getRepeatPassword())) {
+            throw new RuntimeException("Password do not match! ");
         }
+        user.setPassword(request.getPassword());
         user.setEmail(request.getEmail());
         user.setRole(Role.USER);
         user.setCreateDate(LocalDate.now());
@@ -31,7 +32,7 @@ public class AuthMapper {
         userResponse.setName(user.getName());
         userResponse.setLastName(user.getLastName());
         userResponse.setEmail(user.getEmail());
-        userResponse.setRole(Role.USER);
+        userResponse.setRole(user.getRole());
         return userResponse;
     }
 }
