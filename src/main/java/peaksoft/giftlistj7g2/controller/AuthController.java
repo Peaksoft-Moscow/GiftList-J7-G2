@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import peaksoft.giftlistj7g2.model.dto.AuthRequest;
 import peaksoft.giftlistj7g2.model.dto.AuthResponse;
 import peaksoft.giftlistj7g2.service.AuthService;
+
 import java.util.Map;
 
 @RestController
@@ -25,6 +26,7 @@ public class AuthController {
 
     @GetMapping("/with-google")
     public Map<String, Object> withGoggle(OAuth2AuthenticationToken token) throws ClassNotFoundException {
+        System.out.println("with google");
         return authService.signUpWithGoogle(token);
     }
 }

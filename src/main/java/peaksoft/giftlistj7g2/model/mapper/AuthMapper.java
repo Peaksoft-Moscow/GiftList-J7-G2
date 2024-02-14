@@ -15,6 +15,10 @@ public class AuthMapper {
         user.setName(request.getName());
         user.setLastName(request.getLastName());
         user.setPassword(request.getPassword());
+
+        if (user.getPassword().equals(request.getRepeatPassword())) {
+            user.setPassword(request.getPassword());
+        }
         user.setEmail(request.getEmail());
         user.setRole(Role.USER);
         user.setCreateDate(LocalDate.now());
