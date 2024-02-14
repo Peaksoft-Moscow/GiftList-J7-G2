@@ -1,4 +1,4 @@
-package peaksoft.giftlistj7g2.model.dto;
+package peaksoft.giftlistj7g2.dto.dto;
 
 import lombok.Getter;
 import lombok.Setter;
