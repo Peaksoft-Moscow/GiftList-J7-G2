@@ -15,10 +15,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class JwtUtil {
     String secretKey = "gift_list";
-    final Long TOKEN_EXPIRATION = 24 * 7 * 60 * 60 * 1000L;
+    Long TOKEN_EXPIRATION = 24 * 7 * 60 * 60 * 1000L;
 
 
     public String generateToken(User userDetails) {

@@ -21,10 +21,10 @@ import java.util.Collection;
 
 @Component
 @RequiredArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class JwtFilter extends OncePerRequestFilter {
-    final JwtUtil jwtUtil;
-    final UserDetailsServiceImpl userDetailsServiceImpl;
+    JwtUtil jwtUtil;
+    UserDetailsServiceImpl userDetailsServiceImpl;
 
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
@@ -32,13 +32,13 @@ public class JwtFilter extends OncePerRequestFilter {
         final String tokeHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
         String username;
         String jwt;
-        if (tokeHeader != null && tokeHeader.startsWith("Bearer ")){
+        if (tokeHeader != null && tokeHeader.startsWith("Bearer ")) {
             jwt = tokeHeader.substring(7);
             username = jwtUtil.extractUsername(jwt);
-            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null){
+            if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails user = userDetailsServiceImpl.loadUserByUsername(username);
                 Collection<? extends GrantedAuthority> role = user.getAuthorities();
-                if (jwtUtil.validateToken(jwt, user)){
+                if (jwtUtil.validateToken(jwt, user)) {
                     UsernamePasswordAuthenticationToken token =
                             new UsernamePasswordAuthenticationToken(user, null, role);
                     token.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

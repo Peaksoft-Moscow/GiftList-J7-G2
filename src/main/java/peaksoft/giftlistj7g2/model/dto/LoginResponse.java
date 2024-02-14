@@ -7,13 +7,11 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import peaksoft.giftlistj7g2.model.enums.Role;
 
-import java.util.List;
-
 @Getter
 @Setter
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class LoginResponse {
     String token;
-    List<String> roleName;
+    Role role;
 }
