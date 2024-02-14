@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import peaksoft.giftlistj7g2.dto.LoginRequest;
 import peaksoft.giftlistj7g2.dto.LoginResponse;
 import peaksoft.giftlistj7g2.dto.RegisterRequest;
 import peaksoft.giftlistj7g2.dto.RegisterResponse;
+import peaksoft.giftlistj7g2.dto.LoginRequest;
 import peaksoft.giftlistj7g2.mapper.LoginMapper;
 import peaksoft.giftlistj7g2.service.UserService;
 
@@ -18,15 +18,8 @@ import peaksoft.giftlistj7g2.service.UserService;
 @RequestMapping("/api/auth")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class AuthController {
-    UserService userService;
-    LoginMapper loginMapper;
-
     @Autowired
-    public AuthController(UserService userService, LoginMapper loginMapper) {
-        this.userService = userService;
-        this.loginMapper = loginMapper;
-    }
-
+    UserService userService;
 
     @PostMapping("/sign-up")
     public ResponseEntity<RegisterResponse> registration(@RequestBody RegisterRequest request) {
