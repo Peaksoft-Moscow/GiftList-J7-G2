@@ -28,14 +28,14 @@ public class UserController {
     }
 
 
-    @PostMapping("/sing-up")
+    @PostMapping("/sign-up")
     public ResponseEntity<RegisterResponse> registration(@RequestBody RegisterRequest request) {
         RegisterResponse response = userService.save(request);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
 
-    @PostMapping("/sing-in")
+    @PostMapping("/sign-in")
     public ResponseEntity<LoginResponse> singIn(@RequestBody LoginRequest request) {
         System.out.println("Log in controller");
         LoginResponse response = userService.login(request);
