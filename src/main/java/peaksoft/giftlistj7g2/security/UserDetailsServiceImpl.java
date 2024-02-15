@@ -7,14 +7,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import peaksoft.giftlistj7g2.model.repository.AuthRepository;
+import peaksoft.giftlistj7g2.model.repository.UserRepository;
 
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    AuthRepository userRepository;
+    UserRepository userRepository;
 
 
 

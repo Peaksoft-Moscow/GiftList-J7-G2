@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import peaksoft.giftlistj7g2.model.dto.LoginRequest;
 import peaksoft.giftlistj7g2.model.dto.LoginResponse;
 import peaksoft.giftlistj7g2.model.entities.User;
-import peaksoft.giftlistj7g2.model.repository.AuthRepository;
+import peaksoft.giftlistj7g2.model.repository.UserRepository;
 import peaksoft.giftlistj7g2.security.jwt.JwtUtil;
 import peaksoft.giftlistj7g2.model.mapper.LoginMapper;
 
@@ -17,7 +17,7 @@ import peaksoft.giftlistj7g2.model.mapper.LoginMapper;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AuthService {
-    AuthRepository repository;
+    UserRepository repository;
     JwtUtil jwtUtil;
     AuthenticationManager authenticationManager;
     LoginMapper loginMapper;
