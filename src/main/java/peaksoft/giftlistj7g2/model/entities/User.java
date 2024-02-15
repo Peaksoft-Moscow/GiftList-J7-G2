@@ -14,8 +14,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "users")
@@ -30,11 +28,12 @@ public class User implements UserDetails {
     Long id;
     String name;
     String lastName;
+    @Column(unique = true)
     String email;
-    String password;//
+    String password;
     int age;
     int telephone;
-    LocalDate createDate;//
+    LocalDate createDate;
     @Enumerated(EnumType.STRING)
     ShoesSize shoesSize;
     @Enumerated(EnumType.STRING)
@@ -50,15 +49,13 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     Role role;
 
-
-        @Override
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-
-            authorities.add(new SimpleGrantedAuthority(role.getAuthority()));
-
+        authorities.add(new SimpleGrantedAuthority(role.getAuthority()));
         return authorities;
     }
+
     @Override
     public String getUsername() {
         return email;

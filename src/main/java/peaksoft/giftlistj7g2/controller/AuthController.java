@@ -1,12 +1,17 @@
 package peaksoft.giftlistj7g2.controller;
 
+import jakarta.validation.Valid;
 import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.giftlistj7g2.model.dto.AuthRequest;
 import peaksoft.giftlistj7g2.model.dto.AuthResponse;
+import peaksoft.giftlistj7g2.model.dto.LoginRequest;
+import peaksoft.giftlistj7g2.model.dto.LoginResponse;
 import peaksoft.giftlistj7g2.service.AuthService;
 
 import java.util.Map;
@@ -14,7 +19,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AuthController {
     AuthService authService;
 
@@ -31,7 +36,8 @@ public class AuthController {
 
     @PostMapping("/sign-in")
     public ResponseEntity<LoginResponse> singIn(@RequestBody LoginRequest request) {
-        LoginResponse response = userService.login(request);
+        System.out.println("Login");
+        LoginResponse response = authService.login(request);
         return ResponseEntity.ok(response);
     }
 }

@@ -7,22 +7,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import peaksoft.giftlistj7g2.model.repository.UserRepository;
+import peaksoft.giftlistj7g2.repository.UserRepository;
 
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserDetailsServiceImpl implements UserDetailsService {
-
     @Autowired
     UserRepository userRepository;
 
-
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
-
+        return userRepository.findByEmail(username);
     }
 }
-

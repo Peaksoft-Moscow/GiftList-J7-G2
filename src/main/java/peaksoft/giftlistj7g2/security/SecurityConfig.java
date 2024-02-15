@@ -23,10 +23,9 @@ import peaksoft.giftlistj7g2.security.jwt.JwtFilter;
 @EnableWebSecurity
 @RequiredArgsConstructor
 @Slf4j
-@FieldDefaults(level = AccessLevel.PRIVATE,makeFinal = true)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class SecurityConfig {
-
-     JwtFilter jwtFilter;
+    JwtFilter jwtFilter;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -38,7 +37,6 @@ public class SecurityConfig {
         return new UserDetailsServiceImpl();
     }
 
-
     @Bean
     public AuthenticationManager daoAuthenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
@@ -46,7 +44,6 @@ public class SecurityConfig {
         provider.setPasswordEncoder(passwordEncoder());
         return new ProviderManager(provider);
     }
-
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
