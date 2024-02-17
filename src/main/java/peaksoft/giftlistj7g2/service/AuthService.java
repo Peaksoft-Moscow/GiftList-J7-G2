@@ -1,18 +1,24 @@
 package peaksoft.giftlistj7g2.service;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import peaksoft.giftlistj7g2.model.dto.AuthResponse;
+import peaksoft.giftlistj7g2.model.dto.LoginRequest;
+import peaksoft.giftlistj7g2.model.dto.LoginResponse;
 import peaksoft.giftlistj7g2.model.entities.User;
 import peaksoft.giftlistj7g2.model.enums.Role;
 import peaksoft.giftlistj7g2.model.mapper.AuthMapper;
+import peaksoft.giftlistj7g2.model.mapper.LoginMapper;
 import peaksoft.giftlistj7g2.repository.UserRepository;
 import peaksoft.giftlistj7g2.model.dto.AuthRequest;
-import peaksoft.giftlistj7g2.model.dto.AuthResponse;
+import peaksoft.giftlistj7g2.security.jwt.JwtUtil;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,13 +27,17 @@ import java.util.Map;
 @Slf4j
 @RequiredArgsConstructor
 @Validated
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AuthService {
-    private final AuthMapper authMapper;
-    private final UserRepository authRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
+    AuthMapper authMapper;
+    UserRepository userRepository;
+    BCryptPasswordEncoder passwordEncoder;
+    JwtUtil jwtUtil;
+    LoginMapper loginMapper;
+
     public AuthResponse signUp(AuthRequest authRequest) {
         User user = authMapper.mapToEntity(authRequest);
-        authRepository.save(user);
+        userRepository.save(user);
         return authMapper.mapToResponse(user);
     }
 
@@ -45,7 +55,7 @@ public class AuthService {
         map.get("given_name");
         user.setCreateDate(LocalDate.now());
         user.setRole(Role.USER);
-        authRepository.save(user);
+        userRepository.save(user);
         Map<String, Object> getValues = new HashMap<>();
         getValues.put("name: ", user.getName());
         getValues.put("lastname: ", user.getLastName());
@@ -53,5 +63,16 @@ public class AuthService {
         getValues.put("role: ", user.getRole());
         getValues.put("createDate", LocalDate.now());
         return getValues;
+    }
+
+    public LoginResponse login(LoginRequest request) {
+        System.out.println(request.getEmail());
+        User user = userRepository.findByEmail(request.getEmail());
+        if (user != null && user.getEmail().equals(request.getEmail())) {
+            String jwt = jwtUtil.generateToken(user);
+            return loginMapper.mapToResponse(jwt, user);
+        } else {
+            throw new RuntimeException("Invalid email");
+        }
     }
 }
