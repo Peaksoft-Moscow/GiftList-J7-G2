@@ -22,7 +22,6 @@ import peaksoft.giftlistj7g2.security.jwt.JwtUtil;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
-
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -67,8 +66,8 @@ public class AuthService {
 
     public LoginResponse login(LoginRequest request) {
         System.out.println(request.getEmail());
-        User user = userRepository.findByEmail(request.getEmail());
-        if (user != null && user.getEmail().equals(request.getEmail())) {
+        User user = userRepository.findByEmail(request.getEmail()).get();
+        if (user != null) {
             String jwt = jwtUtil.generateToken(user);
             return loginMapper.mapToResponse(jwt, user);
         } else {

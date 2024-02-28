@@ -49,6 +49,18 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     Role role;
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+            @JoinTable(name = "user_friends",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "friend_id"))
+    List<User> friends = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch =FetchType.EAGER )
+    List<User> requestToFriends = new ArrayList<>();
+
+    public User(User requester, User recipient) {
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
