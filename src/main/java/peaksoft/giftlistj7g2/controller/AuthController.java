@@ -13,6 +13,7 @@ import peaksoft.giftlistj7g2.model.dto.AuthResponse;
 import peaksoft.giftlistj7g2.model.dto.LoginRequest;
 import peaksoft.giftlistj7g2.model.dto.LoginResponse;
 import peaksoft.giftlistj7g2.service.AuthService;
+
 import java.util.Map;
 @RestController
 @RequestMapping("/api/auth")
@@ -20,6 +21,7 @@ import java.util.Map;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AuthController {
     AuthService authService;
+
 
     @PostMapping("/sign-up")
     public ResponseEntity<AuthResponse> registrationMethod(@RequestBody @Valid AuthRequest authRequest) {
