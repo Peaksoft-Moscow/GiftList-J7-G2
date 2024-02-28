@@ -88,7 +88,6 @@ public class FriendsService {
 
     public List<User> getAllRequestsFromFriends(Principal principal){
         User user = userRepository.findByEmail(principal.getName()).orElseThrow(() -> new UsernameNotFoundException("Not found user " + principal.getName()));
-        List<User> allRequestFromFriends = user.getFriends();
-        return allRequestFromFriends;
+        return user.getFriends();
     }
 }
